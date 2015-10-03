@@ -1,6 +1,6 @@
 <html>
 	<head>
-		<title>JS example 7</title>
+		<title>JS example 8</title>
 		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
 	</head>
 	<body>
@@ -31,7 +31,8 @@
 						contentType: false,
 						processData: false,
 						success: function(data, textStatus, jqXHR) {
-							$("#output").empty().append(jqXHR.responseText);
+							var obj = $.parseJSON(jqXHR.responseText);
+							$("#output").empty().append(obj.Hash);
 						},
 						error: function(jqXHR, textStatus, errorThrown) {
 							$("#output").empty().append("<p>Upload failed!</p>");
