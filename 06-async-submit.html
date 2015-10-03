@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<title>JS example 6</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<form name="myForm" id="myForm" action="http://127.0.0.1:5002/api/v0/add" method="post" enctype="multipart/form-data">
+			<input type="file" name="fileToUpload" id="fileToUpload">
+			<input type="submit" value="Upload" name="submit">
+		</form>
+
+		<div id="output"></div>
+
+		<script>
+			$(document).ready(function() {
+				$("#myForm").submit(function(event) {
+
+					var formURL = $(this).attr("action");
+					var formData = new FormData($(this)[0]);
+
+					event.preventDefault();
+
+					$.ajax({
+						url: formURL,
+						type: "POST",
+						data: formData,
+						async: false,
+						cache: false,
+						contentType: false,
+						processData: false,
+						success: function(data, textStatus, jqXHR) {
+							$("#output").empty().append("<p>Upload successful!</p>");
+						},
+						error: function(jqXHR, textStatus, errorThrown) {
+							$("#output").empty().append("<p>Upload failed!</p>");
+						}
+					});
+
+					return false;
+				});
+			});
+		</script>
+	</body>
+</html>
