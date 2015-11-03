@@ -1,0 +1,20 @@
+<html>
+	<head>
+		<title>JS example 13</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<p><img id="foobar" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"></p>
+
+		<script>
+			$('#foobar').load(function() {
+				$("#output").empty().append("<p>Image width: " + this.naturalWidth + " pixels</p>");
+				$("#output").append("<p>Image height: " + this.naturalHeight + " pixels</p>");
+			});
+		</script>
+	</body>
+</html>
