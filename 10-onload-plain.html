@@ -1,0 +1,18 @@
+<html>
+	<head>
+		<title>JS example 10</title>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<p><img onload="loadImage()" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png"></p>
+
+		<script>
+			function loadImage() {
+				document.getElementById("output").innerHTML = "The image was loaded!";
+			}
+		</script>
+	</body>
+</html>
