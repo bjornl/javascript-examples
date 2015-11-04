@@ -1,0 +1,91 @@
+<html>
+	<head>
+		<title>JS example 18</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<canvas id="myCanvas" width="300" height="210" style="border:1px solid #c3c3c3;">
+			Your browser does not support the canvas element.
+		</canvas>
+
+		<br><canvas id="myCanvas2" width="200" height="210" style="border:1px solid #c3c3c3;">
+			Your browser does not support the canvas element.
+		</canvas>
+
+		<script>
+			//var image1 = $('<img/>').attr('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
+			var image1 = $('<img/>').attr('src', 'https://upload.wikimedia.org/wikipedia/commons/4/48/Hanover_House_(Clemson).JPG');
+			image1.attr('id', 'myImage');
+			$('.profile').append(image1);
+
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+
+			var canvas2 = document.getElementById("myCanvas2");
+			var ctx2 = canvas.getContext("2d");
+
+			//$('<img/>').attr('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png').load(function() {
+			$('<img/>').attr('src', 'https://upload.wikimedia.org/wikipedia/commons/4/48/Hanover_House_(Clemson).JPG').load(function() {
+				$('.profile').append($(this));
+
+				$("#output").empty().append("<p>Image id: " + image1.attr('id') + "</p>");
+				$("#output").append("<p>Image src: " + image1.attr('src') + "</p>");
+
+				var img = new Image();
+				img.src = image1.attr('src');
+
+				$("#output").append("<p>Image width: " + img.naturalWidth + " pixels</p>");
+				$("#output").append("<p>Image height: " + img.naturalHeight + " pixels</p>");
+
+				var rect_box_size = 200;
+
+				/* scale the smallest image axle */
+				if (img.naturalHeight < img.naturalWidth) {
+					$("#output").append("<p>Smallest image axle is y (height / vertical)</p>");
+
+					var scale_factor = rect_box_size / img.naturalHeight;
+					var scaled_x = img.naturalWidth * scale_factor;
+					var scaled_y = img.naturalHeight * scale_factor;
+
+					middle_x = img.naturalWidth * 0.5;
+					right_pos = middle_x + (rect_box_size / 2)
+					left_pos = middle_x - (rect_box_size / 2)
+
+					$("#output").append("<p>Scale factor: " + scale_factor + " for a " + rect_box_size + "x" + rect_box_size + " rect</p>");
+					$("#output").append("<p>Scaled size: " + scaled_x + "x" + scaled_y + "</p>");
+
+				} else {
+					$("#output").append("<p>Smallest image axle is x (width / horizontal)</p>");
+
+					var scale_factor = rect_box_size / img.naturalWidth;
+					var scaled_x = img.naturalWidth * scale_factor;
+					var scaled_y = img.naturalHeight * scale_factor;
+
+					middle_y = img.naturalHeight * 0.5;
+					top_pos = middle_y + (rect_box_size / 2)
+					bottom_pos = middle_y - (rect_box_size / 2)
+
+					$("#output").append("<p>Scale factor: " + scale_factor + " for a " + rect_box_size + "x" + rect_box_size + " rect</p>");
+					$("#output").append("<p>Scaled size: " + scaled_x + "x" + scaled_y + "</p>");
+				}
+
+				var xpos = 0; /* x = horisontal position */
+				var ypos = 0; /* y = vertical position */
+
+				/* crop the upper left of the image */
+				//crop_x = img.naturalWidth * 0.5;
+				//crop_y = img.naturalHeight * 0.5;
+
+				//ctx.drawImage(img, left_pos, 0, right_pos, scaled_y, xpos, ypos, right_pos, scaled_y);
+				//ctx.drawImage(img, 100, 0, 300, 184, xpos, ypos, 300, 184);
+				//ctx.drawImage(img, 0, 0, img.naturalWidth-500, img.naturalHeight, xpos, ypos, scaled_x-130.2083333333333500, scaled_y);
+				//ctx.drawImage(img, 100, 0, img.naturalWidth-100, img.naturalHeight, xpos, ypos, 200, scaled_y);
+				ctx.drawImage(img, 412, 0, img.naturalWidth-612, img.naturalHeight, xpos, ypos, 200, scaled_y);
+			});
+		</script>
+	</body>
+</html>
