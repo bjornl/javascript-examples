@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<title>JS example 14</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<canvas id="myCanvas" width="600" height="400" style="border:1px solid #c3c3c3;">
+			Your browser does not support the canvas element.
+		</canvas>
+
+		<img id="myImage" src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png" width="0" height="0">
+
+		<script>
+			var canvas = document.getElementById("myCanvas");
+			var ctx = canvas.getContext("2d");
+			var img = new Image();
+			img.src = document.getElementById("myImage").src;
+			img.addEventListener("load", function() {
+				$("#output").empty().append("<p>Image width: " + img.naturalWidth + " pixels</p>");
+				$("#output").append("<p>Image height: " + this.naturalHeight + " pixels</p>");
+			}, false);
+			ctx.drawImage(img, 0, 0);
+		</script>
+	</body>
+</html>

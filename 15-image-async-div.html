@@ -1,0 +1,21 @@
+<html>
+	<head>
+		<title>JS example 15</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<script>
+			var img = $('<img />').attr('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png');
+			$('.profile').append(img);
+
+			$('<img/>').attr('src', 'https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_272x92dp.png').load(function() {
+				$('.profile').append($(this));
+				$("#output").empty().append(img);
+			});
+		</script>
+	</body>
+</html>
