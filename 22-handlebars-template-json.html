@@ -1,0 +1,73 @@
+<html>
+	<head>
+		<title>JS example 22</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.5.js"></script>
+		<style>
+			table,th,td {
+				border-collapse: collapse;
+				border: 1px solid black;
+			}
+		</style>
+	</head>
+	<body>
+
+	<div id="output"></div>
+
+<script id="some-template" type="text/x-handlebars-template">
+<table>
+    <thead> 
+        <th>Name</th> 
+        <th>Job Title</th> 
+        <th>Twitter</th> 
+    </thead> 
+    <tbody> 
+        {{#users}} 
+        <tr> 
+            <td>{{fullName person}}</td> 
+            <td>{{jobTitle}}</td> 
+            <td><a href="https://twitter.com/{{twitter}}">@{{twitter}}</a></td> 
+        </tr> 
+        {{/users}} 
+    </tbody> 
+</table> 
+</script>
+
+	<script>
+
+var data = { 
+    users: [ { 
+        person: {
+            firstName: "Anne", 
+            lastName: "Anneson"
+        },
+        jobTitle: "Team Lead",
+        twitter: "annea" 
+    }, {
+        person: {
+            firstName: "Bianca", 
+            lastName: "Biancason"
+        }, 
+        jobTitle: "Photographer",
+        twitter: "biancab"
+    }, {
+        person: {
+            firstName: "Carly", 
+            lastName: "Carlyson"
+        }, 
+        jobTitle: "Designer",
+        twitter: "carlyc"
+    } ]
+};
+
+		var source = $("#some-template").html();
+		var template = Handlebars.compile(source);
+		Handlebars.registerHelper('fullName', function(person) {
+			return person.firstName + " " + person.lastName;
+		});
+		var html = template(data);
+		$("#output").empty().append(html);
+	</script>
+
+	</body>
+</html>
