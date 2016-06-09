@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>JS example 21</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+	</head>
+	<body>
+		<p>Hello world!</p>
+
+		<div id="output"></div>
+
+		<script>
+			$(document).ready(function() {
+				// executes when HTML-Document is loaded and DOM is ready
+				$("#output").append("<p>Document is ready!</p>");
+			});
+
+			$(window).load(function() {
+				// executes when complete page is fully loaded, including all frames, objects and images
+				$("#output").append("<p>Window is loaded!</p>");
+			});
+		</script>
+	</body>
+</html>
