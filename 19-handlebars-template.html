@@ -1,0 +1,24 @@
+<html>
+	<head>
+		<title>JS example 19</title>
+		<script src="http://code.jquery.com/jquery-2.1.4.js"></script>
+		<script src="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v4.0.5.js"></script>
+	</head>
+	<body>
+
+	<div id="output"></div>
+
+	<script id="entry-template" type="text/x-handlebars-template">
+		<h1>{{mystring1}} {{mystring2}}</h1>
+	</script>
+
+	<script>
+		var source = $("#entry-template").html();
+		var template = Handlebars.compile(source);
+		var context = { mystring1: "Hello", mystring2: "World" };
+		var html = template(context);
+		$("#output").empty().append(html);
+	</script>
+
+	</body>
+</html>
